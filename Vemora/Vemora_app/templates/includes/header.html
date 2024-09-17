@@ -1,0 +1,53 @@
+<nav
+    class="navbar navbar-expand-sm navbar-dark bg-dark"
+>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Vemora</a>
+        <button
+            class="navbar-toggler d-lg-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav ms-auto ">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url "index" %}" >Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url "collection" %}">Categories</a>
+                </li>
+               <li>
+                {% if request.user.is_authenticated %}
+                <li class="nav-item ">  <a class="nav-link active" aria-current="page" href="#"><i class="fa fa-user"></i> {{request.user}}</a>
+                </li>
+                <li class="nav-item "><a class="nav-link active" aria-current="page" href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Logout</a>
+                </li>
+              {% else %}
+
+              <li class="nav-item">
+             <a class="nav-link active" href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Login</a>
+            </li>
+            <li class="nav-item">
+             <a class="nav-link active" href="{% url 'register' %}"><i class="fa fa-users"></i> Register</a>
+            </li>
+               
+               
+              {% endif %}
+               </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url "cart" %}">Cart</a>
+                </li>
+                
+          <a class="nav-link" href="{% url 'favviewpage' %}"><i class="fa fa-heart"></i> Favourite</a>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
